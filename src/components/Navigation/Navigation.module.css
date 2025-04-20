@@ -1,0 +1,20 @@
+.link {
+  color: white;
+  font-size: 26px;
+  text-decoration: none;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.active {
+  color: rgb(22, 165, 3);
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: rgb(22, 165, 3);
+}

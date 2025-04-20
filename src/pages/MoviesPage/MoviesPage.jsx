@@ -1,7 +1,12 @@
-import React from 'react';
+import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
+import MovieSearchBar from '../../components/MovieSearchBar/MovieSearchBar';
 
 const MoviesPage = () => {
-  return <div>MoviesPage</div>;
+  return (
+    <div>
+      <MovieSearchBar />
+    </div>
+  );
 };
 
 export default MoviesPage;
