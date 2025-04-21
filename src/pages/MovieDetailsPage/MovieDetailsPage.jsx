@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import {
   Link,
   NavLink,
@@ -7,12 +7,13 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { fetchTmdbById } from '../../services/MyApi';
+import css from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const { moviesId } = useParams();
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState(null);
   const location = useLocation();
-  const goBackRef = useRef(location.state ?? '/');
+  const goBackRef = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     const getData = async () => {
@@ -20,33 +21,57 @@ const MovieDetailsPage = () => {
         const data = await fetchTmdbById(moviesId);
         setMovies(data);
       } catch (error) {
-        console.log(error);
+        console.log('Error fetching movie details:', error);
       }
     };
     getData();
   }, [moviesId]);
 
+  if (!movies) return <p>Loading movie...</p>;
+
+  const { poster_path, title, overview, genres, vote_average } = movies;
+
   return (
     <div>
-      <Link to={goBackRef.current}>Go back</Link>
-      <h2>{movies.title}</h2>
-      <p>{movies.id}</p>
-      <div>
-        <hr />
-        <p>Additional information</p>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="moviecast">Cast</NavLink>
-            </li>
-            <li>
-              <NavLink to="moviereviews">Revies</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <hr />
-        <Outlet />
+      <Link to={goBackRef.current}>⬅ Go back</Link>
+      <div className={css.poster}>
+        {poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt={title}
+            width="300"
+          />
+        )}
+        <div>
+          <h2>{title}</h2>
+          <p>
+            <strong>Rating:</strong> {vote_average}
+          </p>
+          <p>
+            <strong>Overview:</strong> {overview}
+          </p>
+          <p>
+            <strong>Genres:</strong>
+            {genres.map((genre) => genre.name).join(', ')}
+          </p>
+        </div>
       </div>
+
+      <hr />
+
+      <h3>Additional information</h3>
+      <ul>
+        <li>
+          <NavLink to="moviecast">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="moviereviews">Reviews</NavLink>
+        </li>
+      </ul>
+
+      <Suspense fallback={<p>Loading additional info...</p>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

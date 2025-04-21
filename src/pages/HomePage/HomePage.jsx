@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchTmdb } from '../../services/MyApi';
 import MovieList from '../../components/MovieList/MovieList';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   const [trendFilm, setTrendFilm] = useState([]);
@@ -21,7 +22,7 @@ const HomePage = () => {
   }, []);
   console.log(trendFilm);
   return (
-    <div>
+    <div className={css.mainBox}>
       <h2>TRANDING TODAY</h2>
       <MovieList trendFilm={trendFilm} />
     </div>

@@ -5,7 +5,7 @@ import { fetchCastById } from '../../services/MyApi';
 const MovieCast = () => {
   const { moviesId } = useParams();
 
-  const [cast, setCast] = useState({});
+  const [cast, setCast] = useState([]);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -17,14 +17,14 @@ const MovieCast = () => {
     };
     getData();
   }, [moviesId]);
+  console.log(cast);
 
   return (
     <div>
-      MovieCast
       <ul>
-        {cast.map((item) => {
-          <li key={item.id}>{item.name}</li>;
-        })}
+        {cast.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
       </ul>
     </div>
   );
