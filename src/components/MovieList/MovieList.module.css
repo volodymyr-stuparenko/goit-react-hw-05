@@ -1,9 +1,10 @@
 .wrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  height: 400px;
   align-content: space-between;
-  gap: 10px;
+  gap: 15px;
 }
 
 .listWrapper {

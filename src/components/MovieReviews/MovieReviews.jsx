@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchReviewsById } from '../../services/MyApi';
 
 const MovieReviews = () => {
@@ -22,10 +22,13 @@ const MovieReviews = () => {
 
   return (
     <ul>
-      {reviews.map((item) => (
-        <Link to={item.url} key={item.id}>
-          <li key={item.id}>{item.author}</li>
-        </Link>
+      {reviews.map((review) => (
+        <li key={review.id}>
+          <p>
+            <strong>Author:</strong> {review.author}
+          </p>
+          <p>{review.content}</p>
+        </li>
       ))}
     </ul>
   );

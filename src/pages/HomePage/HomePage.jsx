@@ -22,7 +22,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className={css.mainBox}>
+    <div>
       <h2 className={css.title}>TRANDING TODAY</h2>
       <MovieList trendFilm={trendFilm} />
     </div>

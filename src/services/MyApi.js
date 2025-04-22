@@ -1,12 +1,14 @@
 import axios from 'axios';
 
+const MyKey =
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc';
+
 export const fetchTmdb = async (signal) => {
   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
 
   const options = {
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc',
+      Authorization: MyKey,
     },
   };
 
@@ -23,8 +25,7 @@ export const fetchTmdbById = async (moviesId) => {
 
   const options = {
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc',
+      Authorization: MyKey,
     },
   };
 
@@ -42,8 +43,7 @@ export const fetchCastById = async (paramId) => {
 
   const options = {
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc',
+      Authorization: MyKey,
     },
   };
 
@@ -61,8 +61,7 @@ export const fetchReviewsById = async (moviesId) => {
 
   const options = {
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc',
+      Authorization: MyKey,
     },
   };
 
@@ -80,8 +79,7 @@ export const fetchSearchMovies = async (query) => {
 
   const options = {
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OGEyNDhmNjYxNmE5MWIzYWExZTZhOTBkNmMzMjRkYiIsIm5iZiI6MTc0NTA2MTI4My42OTYsInN1YiI6IjY4MDM4NWEzYjEzNDEwY2RjNzk5M2ZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eOcaR5tI_xjlW_G7e64BuDyaAWnPKAgCBQs37Iv1sc',
+      Authorization: MyKey,
     },
   };
 
