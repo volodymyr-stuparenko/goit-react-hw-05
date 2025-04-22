@@ -20,10 +20,10 @@ const HomePage = () => {
       abortController.abort();
     };
   }, []);
-  console.log(trendFilm);
+
   return (
     <div className={css.mainBox}>
-      <h2>TRANDING TODAY</h2>
+      <h2 className={css.title}>TRANDING TODAY</h2>
       <MovieList trendFilm={trendFilm} />
     </div>
   );

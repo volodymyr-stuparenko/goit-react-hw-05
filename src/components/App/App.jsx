@@ -14,7 +14,6 @@ function App() {
         <Headers />
         <Routes>
           <Route path="/" element={<HomePage />} />
-
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:moviesId" element={<MovieDetailsPage />}>
             <Route path="moviecast" element={<MovieCast />} />

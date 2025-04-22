@@ -1,21 +1,27 @@
 import MovieSearchBar from '../../components/MovieSearchBar/MovieSearchBar';
+import MovieList from '../../components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
-import { fetchSerchMovies } from '../../services/MyApi';
+import { fetchSearchMovies } from '../../services/MyApi';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
-  const [serchMovies, setSerchMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('query') ?? '';
 
   const handleSubmitMovies = (newValue) => {
-    setQuery(newValue);
+    searchParams.set('query', newValue);
+    setSearchParams(searchParams);
   };
+
   useEffect(() => {
     if (!query) return;
 
     const getData = async () => {
       try {
-        const data = await fetchSerchMovies(query);
-        setSerchMovies(data);
+        const data = await fetchSearchMovies(query);
+        setSearchMovies(data);
       } catch (error) {
         console.log(error);
       }
@@ -25,12 +31,8 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <MovieSearchBar handleSubmitMavies={handleSubmitMovies} />
-      <ul>
-        {serchMovies.map((item) => (
-          <li key={item.id}>{item.original_title}</li>
-        ))}
-      </ul>
+      <MovieSearchBar handleSubmitMovies={handleSubmitMovies} />
+      <MovieList trendFilm={searchMovies} />
     </div>
   );
 };

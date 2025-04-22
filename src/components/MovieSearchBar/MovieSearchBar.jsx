@@ -1,12 +1,13 @@
 import { Field, Form, Formik } from 'formik';
 import css from './MovieSearchBar.module.css';
 
-const MovieSearchBar = () => {
+const MovieSearchBar = ({ handleSubmitMovies }) => {
   const initialValues = {
     query: '',
   };
+
   const handleSubmit = (values) => {
-    console.log(values);
+    handleSubmitMovies(values.query);
   };
 
   return (

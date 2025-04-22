@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  align-content: space-between;
+  gap: 10px;
+}
+
+.listWrapper {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+
+.wrapperBox {
+  border: solid 1px black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wrapperSpan {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}

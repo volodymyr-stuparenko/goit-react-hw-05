@@ -13,7 +13,7 @@ const MovieDetailsPage = () => {
   const { moviesId } = useParams();
   const [movies, setMovies] = useState(null);
   const location = useLocation();
-  const goBackRef = useRef(location.state?.from || '/movies');
+  const goBackRef = useRef(location.state ?? '/');
 
   useEffect(() => {
     const getData = async () => {
@@ -56,18 +56,22 @@ const MovieDetailsPage = () => {
           </p>
         </div>
       </div>
-
       <hr />
-
       <h3>Additional information</h3>
-      <ul>
-        <li>
-          <NavLink to="moviecast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="moviereviews">Reviews</NavLink>
-        </li>
-      </ul>
+      <nav>
+        <ul>
+          <li>
+            <NavLink className={css.link} to="moviecast">
+              Cast
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={css.link} to="moviereviews">
+              Reviews
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
       <Suspense fallback={<p>Loading additional info...</p>}>
         <Outlet />
